@@ -30,13 +30,19 @@ public class MainActivity extends AppCompatActivity {
         stockDataAdapter = new StockDataAdapter();
         recyclerView.setAdapter(stockDataAdapter);
 
-        Observable.just("Hello! Please use this app responsibly")
+//        Observable.just("Hello! Please use this app responsibly")
+//                .subscribe(new Consumer<String>() {
+//                    @Override
+//                    public void accept(String s) throws Exception {
+//                        helloText.setText(s);
+//                    }
+//                });
+        Observable.just("APPLE", "GOOGLE", "TWITTER")
                 .subscribe(new Consumer<String>() {
                     @Override
-                    public void accept(String s) throws Exception {
-                        helloText.setText(s);
+                    public void accept(String stockSymbol) throws Exception {
+                        stockDataAdapter.add(stockSymbol);
                     }
                 });
     }
-
 }
